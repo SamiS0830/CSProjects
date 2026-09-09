@@ -3,13 +3,14 @@ class Flower{
 
 
 constructor(x,y){
-this.startY = y;
+
 this.startX = x;
 this.x = x;
 this.x = y;
 this.speed = 0.03;
 this.t = 0;
-this.targetY = random(windowHeight -100, windowHeight -20);
+this.targetY = random(windowHeight, windowHeight -40);
+this.startY = random(800, );
 this.color = random(colors);
   }
 
