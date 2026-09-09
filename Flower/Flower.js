@@ -1,39 +1,47 @@
 
-let Xpos= 850;
-let Ypos= 480;
-let eWidth = 40
-let eHeight = 58
-let flower = [];
-let colors = ['blue','red','orange','green','yellow','purple']
-let c = 'green';
+class Flower{
 
 
-function setup() {
-  createCanvas(windowWidth, windowHeight);
-  flower.push({x:Xpos, y:Ypos, color:'yellow'})
-  frameRate(5);
+constructor(x,y){
+this.startY = y;
+this.startX = x;
+this.x = x;
+this.x = y;
+this.speed = 0.03;
+this.t = 0;
+this.targetY = random(windowHeight -100, windowHeight -20);
+this.color = random(colors);
+  }
 
-}
-
-function draw() {
-
-  for(let i = 0; i < flower.length; i++){
-    let f = flower[i]
-    
-    fill(c);
+  display(){
+     background('white');
+    fill(this.color);
     for(let x = 0; x < TWO_PI; x+=PI/3){
       push();
-      translate(f.x, f.y)
+      translate(this.x, this.y)
       rotate(x);
      ellipse(0, -40, eWidth,eHeight);
       pop();
     }
-    fill(f.color);
-    circle(f.x, f.y,30);
-    c = random(colors)
+    fill('black');
+    circle(this.x, this.y,30);
+    
+
+ }
+
+ move(){
+  if(this.t < 1){
+    this.t += this.speed;
+    this.y = lerp(this.startY, this.targetY, this.t);
   }
 }
-function mousePressed(){
-  flower.push({x:mouseX, y:mouseY, color:'yellow'})
-}
 
+ moveBack(){
+   if(this.t > 1){
+     
+    this.t += this.speed;
+  
+    this.y = lerp(this.targetY, this.startY, this.t);
+  }
+}
+}
