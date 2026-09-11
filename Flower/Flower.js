@@ -4,18 +4,17 @@ class Flower{
 
 constructor(x,y){
 
-this.startX = x;
 this.x = x;
-this.x = y;
-this.speed = 0.03;
+this.y = y;
+this.speed = 0.01;
 this.t = 0;
-this.targetY = random(windowHeight, windowHeight -40);
-this.startY = random(800, );
+this.targetY = random(800, 1000);
+this.startY = (0,100);
 this.color = random(colors);
   }
 
   display(){
-     background('white');
+    
     fill(this.color);
     for(let x = 0; x < TWO_PI; x+=PI/3){
       push();
@@ -31,18 +30,26 @@ this.color = random(colors);
  }
 
  move(){
-  if(this.t < 1){
+    
+
     this.t += this.speed;
     this.y = lerp(this.startY, this.targetY, this.t);
+
+  if(this.t > 1){
+    this.speed = 0;
   }
+
 }
 
  moveBack(){
-   if(this.t > 1){
-     
-    this.t += this.speed;
+ 
   
+     
+    this.t += this.speed * -1;
     this.y = lerp(this.targetY, this.startY, this.t);
+
+  if(this.t < 0){
+    this.speed =0;
   }
 }
 }
