@@ -8,8 +8,8 @@ this.x = x;
 this.y = y;
 this.speed = 0.01;
 this.t = 0;
-this.targetY = random(800, 1000);
-this.startY = (0,100);
+this.targetY = random(700, 800);
+this.startY = random(0,100);
 this.color = random(colors);
   }
 
@@ -31,25 +31,20 @@ this.color = random(colors);
 
  move(){
     
-
+  if (this.t < 1){
     this.t += this.speed;
     this.y = lerp(this.startY, this.targetY, this.t);
-
-  if(this.t > 1){
-    this.speed = 0;
   }
+  
 
 }
 
  moveBack(){
- 
   
-     
+    if(this.t > 0){
     this.t += this.speed * -1;
     this.y = lerp(this.targetY, this.startY, this.t);
-
-  if(this.t < 0){
-    this.speed =0;
-  }
+    } 
+ 
 }
 }

@@ -25,8 +25,7 @@ function draw() {
     if(tracker % 2 == 0 && tracker != 0)
     {
       for (let f in flowers)
-       flowers [f].move()
-   
+       flowers [f].move();
       
     }
 
@@ -45,6 +44,16 @@ function mousePressed(){
   }
  
   tracker++;
-  
+
+  if(tracker % 2 == 1 ){
+    for (let f of flowers){
+      f.t = 0;
+    }
+  }
+  if(tracker % 2 == 0)
+    for(let f of flowers){
+    f.t = 1;
+    }
+
 }
 
