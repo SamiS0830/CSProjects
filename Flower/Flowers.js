@@ -22,14 +22,14 @@ function draw() {
   for(let f in flowers)
     flowers[f].display();
 
-    if(tracker % 2 == 0 && tracker != 0)
+    if(tracker % 2 == 1 )
     {
       for (let f in flowers)
        flowers [f].move();
       
     }
 
-  if(tracker % 2 ==1)
+  if(tracker % 2 == 0 && tracker != 0)
   {
     for(let f in flowers)
       flowers[f].moveBack();
