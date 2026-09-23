@@ -43,7 +43,7 @@ this.color = random(colors);
   
     if(this.t > 0){
     this.t += this.speed * -1;
-    this.y = lerp(this.targetY, this.startY, this.t);
+    this.y = lerp(this.startY, this.targetY, this.t);
     } 
  
 }
