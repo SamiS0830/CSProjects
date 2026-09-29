@@ -2,10 +2,11 @@
 class Flower{
 
 
-constructor(x,y){
+constructor(x,y,id){
 
 this.x = x;
 this.y = y;
+this.id = id;
 this.speed = 0.01;
 this.t = 0;
 this.targetY = random(700, 800);
@@ -13,9 +14,13 @@ this.startY = random(0,100);
 this.color = random(colors);
   }
 
+  hover(){
+    return dist(mouseX, mouseY,this.x, this.y) < 30;
+   }
+
   display(){
-    
-    fill(this.color);
+    if(this.hover()) fill('green');
+    else fill(this.color);
     for(let x = 0; x < TWO_PI; x+=PI/3){
       push();
       translate(this.x, this.y)
@@ -23,7 +28,11 @@ this.color = random(colors);
      ellipse(0, -40, eWidth,eHeight);
       pop();
     }
+    let info = flowerInfo[this.id];
     fill('black');
+    if(this.hover()){
+       text(info.fact, this.x,this.y+100);
+    }
     circle(this.x, this.y,30);
     
 
@@ -47,4 +56,7 @@ this.color = random(colors);
     } 
  
 }
+
 }
+
+
